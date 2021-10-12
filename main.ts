@@ -2,7 +2,7 @@ input.onButtonPressed(Button.A, function () {
     ship.move(-1)
 })
 input.onButtonPressed(Button.AB, function () {
-    interval = 100
+    interval = 200
 })
 input.onButtonPressed(Button.B, function () {
     ship.move(1)
@@ -21,7 +21,9 @@ basic.forever(function () {
     }
     if (sprite.get(LedSpriteProperty.Y) == 4) {
         game.setScore(game.score() + 1)
+        basic.setLedColor(0x002200)
         basic.pause(interval)
+        basic.turnRgbLedOff()
         sprite.set(LedSpriteProperty.X, randint(0, 4))
         sprite.set(LedSpriteProperty.Y, 0)
     }
