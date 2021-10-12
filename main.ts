@@ -16,15 +16,16 @@ interval = 500
 basic.forever(function () {
     basic.pause(interval)
     sprite.move(1)
-    if (ship.isTouching(sprite)) {
-        game.gameOver()
-    }
-    if (sprite.get(LedSpriteProperty.Y) == 4) {
+    if (sprite.get(LedSpriteProperty.Y) == 4 && ship.isTouching(sprite)) {
         game.setScore(game.score() + 1)
         basic.setLedColor(0x002200)
         basic.pause(interval)
         basic.turnRgbLedOff()
         sprite.set(LedSpriteProperty.X, randint(0, 4))
         sprite.set(LedSpriteProperty.Y, 0)
+    } else {
+        if (sprite.get(LedSpriteProperty.Y) == 4) {
+            game.gameOver()
+        }
     }
 })
